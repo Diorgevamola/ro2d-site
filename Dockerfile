@@ -6,9 +6,9 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY index.html /usr/share/nginx/html/index.html
 COPY img/ /usr/share/nginx/html/img/
 
-# Landing dos 300 Cards em /cards/ — precisa ser copiada explicitamente,
+# Landing dos 300 Cards em /cards_seguranca_familiar/ — precisa ser copiada explicitamente,
 # senão o nginx devolve o HTML da raiz no lugar do conteúdo.
-COPY cards/ /usr/share/nginx/html/cards/
+COPY cards_seguranca_familiar/ /usr/share/nginx/html/cards_seguranca_familiar/
 
 EXPOSE 80
 
