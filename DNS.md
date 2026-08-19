@@ -35,7 +35,7 @@ Continuam funcionando e não atrapalham:
 - `cards-seguranca-portal-dpa.bacjno.easypanel.host` — a mesma landing, na
   versão anterior. O `canonical` das duas aponta para `ro2d.com.br/cards`,
   então o Google entende qual é a oficial.
-  O caminho antigo `/cards` redireciona (301) para o novo.
+  A rota `/cards` está livre, reservada para um catálogo futuro.
 - `luz-para-cada-dia-portal-dpa.bacjno.easypanel.host` — landing do Luz para
   Cada Dia. **Ainda não foi movida** para o domínio novo; se quiser, dá para
   colocá-la em `ro2d.com.br/luz` do mesmo jeito.
