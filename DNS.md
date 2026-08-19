@@ -24,7 +24,7 @@ automaticamente pelo EasyPanel assim que o DNS resolver.
 | Endereço | Conteúdo |
 |---|---|
 | ro2d.com.br | Institucional: quem somos, catálogo, como funciona, políticas |
-| ro2d.com.br/cards | Landing de venda dos 300 Cards de Segurança Familiar |
+| ro2d.com.br/cards_seguranca_familiar | Landing de venda dos 300 Cards |
 
 Tudo servido pelo mesmo container, a partir do repositório `ro2d-site`.
 
@@ -35,6 +35,7 @@ Continuam funcionando e não atrapalham:
 - `cards-seguranca-portal-dpa.bacjno.easypanel.host` — a mesma landing, na
   versão anterior. O `canonical` das duas aponta para `ro2d.com.br/cards`,
   então o Google entende qual é a oficial.
+  O caminho antigo `/cards` redireciona (301) para o novo.
 - `luz-para-cada-dia-portal-dpa.bacjno.easypanel.host` — landing do Luz para
   Cada Dia. **Ainda não foi movida** para o domínio novo; se quiser, dá para
   colocá-la em `ro2d.com.br/luz` do mesmo jeito.
@@ -47,7 +48,7 @@ limpar, é só removê-los no painel — eles não têm DNS apontado.
 
 1. Criar a caixa **contato@ro2d.com.br** — o site inteiro aponta para lá.
 2. Atualizar a "Página de vendas" do produto na Kiwify para
-   `https://ro2d.com.br/cards`.
+   `https://ro2d.com.br/cards_seguranca_familiar`.
 3. Preencher razão social e CNPJ nos rodapés (institucional e landing).
 
 ## Verificar se propagou
@@ -55,5 +56,5 @@ limpar, é só removê-los no painel — eles não têm DNS apontado.
 ```bash
 nslookup ro2d.com.br
 curl -I https://ro2d.com.br
-curl -I https://ro2d.com.br/cards/
+curl -I https://ro2d.com.br/cards_seguranca_familiar/
 ```
