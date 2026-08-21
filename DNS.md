@@ -36,7 +36,7 @@ Continuam funcionando e não atrapalham:
   versão anterior. O `canonical` das duas aponta para `ro2d.com.br/cards`,
   então o Google entende qual é a oficial.
   A rota `/cards` está livre, reservada para um catálogo futuro.
-- `luz-para-cada-dia-portal-dpa.bacjno.easypanel.host` — landing do Luz para
+- `luz-para-cada-dia-portal-dpa.bacjno.easypanel.host` — landing de A Palavra
   Cada Dia. **Ainda não foi movida** para o domínio novo; se quiser, dá para
   colocá-la em `ro2d.com.br/luz` do mesmo jeito.
 
