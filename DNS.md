@@ -25,6 +25,7 @@ automaticamente pelo EasyPanel assim que o DNS resolver.
 |---|---|
 | ro2d.com.br | Institucional: quem somos, catálogo, como funciona, políticas |
 | ro2d.com.br/cards_seguranca_familiar | Landing de venda dos 300 Cards |
+| ro2d.com.br/a-palavra-de-cada-dia | Landing de venda de A Palavra de Cada Dia |
 
 Tudo servido pelo mesmo container, a partir do repositório `ro2d-site`.
 
@@ -36,9 +37,9 @@ Continuam funcionando e não atrapalham:
   versão anterior. O `canonical` das duas aponta para `ro2d.com.br/cards`,
   então o Google entende qual é a oficial.
   A rota `/cards` está livre, reservada para um catálogo futuro.
-- `luz-para-cada-dia-portal-dpa.bacjno.easypanel.host` — landing de A Palavra
-  Cada Dia. **Ainda não foi movida** para o domínio novo; se quiser, dá para
-  colocá-la em `ro2d.com.br/luz` do mesmo jeito.
+- `luz-para-cada-dia-portal-dpa.bacjno.easypanel.host` — endereço anterior
+  de A Palavra de Cada Dia. Deve continuar acessível enquanto houver links ou
+  campanhas antigas; a rota oficial é `ro2d.com.br/a-palavra-de-cada-dia/`.
 
 Também deixei cadastrados no EasyPanel os domínios `cards.ro2d.com.br` e
 `luz.ro2d.com.br` da montagem anterior. Eles não atrapalham, mas se quiser
@@ -57,4 +58,5 @@ limpar, é só removê-los no painel — eles não têm DNS apontado.
 nslookup ro2d.com.br
 curl -I https://ro2d.com.br
 curl -I https://ro2d.com.br/cards_seguranca_familiar/
+curl -I https://ro2d.com.br/a-palavra-de-cada-dia/
 ```
