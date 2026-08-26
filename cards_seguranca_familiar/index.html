@@ -230,12 +230,12 @@
     font-size:.78rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
     padding:.5rem 1rem;border-radius:8px;margin:0 auto 1.4rem;max-width:340px}
   .checklist{list-style:none;margin:0 0 1.6rem;padding:0;display:flex;flex-direction:column;gap:.7rem}
-  .checklist li{display:grid;grid-template-columns:auto 1fr;gap:.65rem;font-size:.97rem;align-items:start}
-  .checklist li::before{content:"\2713";color:var(--green);font-weight:800;font-size:1.05rem;line-height:1.45}
+  .checklist li{position:relative;padding-left:1.7rem;font-size:.97rem}
+  .checklist li::before{content:"\2713";position:absolute;left:0;top:.05em;color:var(--green);font-weight:800;font-size:1.05rem}
   .checklist-divider{display:flex;align-items:center;gap:.6rem;margin:.3rem 0 .8rem;
     font-size:.74rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#B5860F}
   .checklist-divider::before,.checklist-divider::after{content:"";flex:1;height:1px;background:#F2E2BC}
-  .checklist-bonus li::before{content:"\2795";color:var(--gold);font-size:.85rem;line-height:1.6}
+  .checklist-bonus li::before{content:"\2795";color:var(--gold);font-size:.85rem}
   .price-block{text-align:center;padding:1.5rem 1rem;background:#F1FAF4;
     border:1px solid #C9EBD6;border-radius:14px;margin-bottom:1.4rem}
   .price-was{font-size:.95rem;color:var(--ink-soft)}
@@ -254,8 +254,8 @@
     padding:.25rem .7rem;border-radius:999px;letter-spacing:.04em}
   .bump p{font-size:.93rem;color:var(--ink-soft)}
   .bump ul{list-style:none;margin:.9rem 0 0;padding:0;display:flex;flex-direction:column;gap:.5rem}
-  .bump li{display:grid;grid-template-columns:auto 1fr;gap:.55rem;font-size:.91rem}
-  .bump li::before{content:"\2795";color:var(--gold);font-weight:800;font-size:.8rem;line-height:1.6}
+  .bump li{position:relative;padding-left:1.4rem;font-size:.91rem}
+  .bump li::before{content:"\2795";position:absolute;left:0;top:.15em;color:var(--gold);font-weight:800;font-size:.8rem}
 
   /* garantia */
   .guarantee{max-width:720px;margin:2rem auto 0;background:#fff;border:1px solid var(--line);
