@@ -232,6 +232,10 @@
   .checklist{list-style:none;margin:0 0 1.6rem;padding:0;display:flex;flex-direction:column;gap:.7rem}
   .checklist li{display:grid;grid-template-columns:auto 1fr;gap:.65rem;font-size:.97rem;align-items:start}
   .checklist li::before{content:"\2713";color:var(--green);font-weight:800;font-size:1.05rem;line-height:1.45}
+  .checklist-divider{display:flex;align-items:center;gap:.6rem;margin:.3rem 0 .8rem;
+    font-size:.74rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#B5860F}
+  .checklist-divider::before,.checklist-divider::after{content:"";flex:1;height:1px;background:#F2E2BC}
+  .checklist-bonus li::before{content:"\2795";color:var(--gold);font-size:.85rem;line-height:1.6}
   .price-block{text-align:center;padding:1.5rem 1rem;background:#F1FAF4;
     border:1px solid #C9EBD6;border-radius:14px;margin-bottom:1.4rem}
   .price-was{font-size:.95rem;color:var(--ink-soft)}
@@ -793,10 +797,14 @@
         <li><b>10 trilhas e 20 categorias</b>, da prevenção em casa ao pós-evento</li>
         <li><b>36 folhas A4</b> prontas para imprimir, 9 cards por folha, com marcas de corte</li>
         <li><b>12 cards de dica</b> e <b>12 cards de conclusão</b> de bloco</li>
-        <li><b>Capa e contracapa</b> para montar o baralho <i>(Bônus)</i></li>
-        <li><b>Trilha completa de golpes digitais</b> — PIX, WhatsApp, QR Code, voz clonada <i>(Bônus)</i></li>
-        <li><b>Kit de emergência de 72 horas</b> em cards preenchíveis <i>(Bônus)</i></li>
-        <li><b>Acesso vitalício</b> e todas as atualizações futuras <i>(Bônus)</i></li>
+      </ul>
+
+      <p class="checklist-divider">+ 4 bônus inclusos</p>
+      <ul class="checklist checklist-bonus">
+        <li><b>Capa e contracapa</b> para montar o baralho</li>
+        <li><b>Trilha completa de golpes digitais</b> — PIX, WhatsApp, QR Code, voz clonada</li>
+        <li><b>Kit de emergência de 72 horas</b> em cards preenchíveis</li>
+        <li><b>Acesso vitalício</b> e todas as atualizações futuras</li>
       </ul>
 
       <div class="price-block">
