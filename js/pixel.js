@@ -1,7 +1,8 @@
 /*
  * Pixel do Meta — RO2D
  * Um arquivo para todas as páginas. Cada página só precisa de:
- *   <script defer src="/js/pixel.js" data-valor="9.99" data-produto="Luz para Cada Dia"></script>
+ *   <script defer src="/js/pixel.js" data-valor="9.99" data-produto="Luz para Cada Dia"
+ *           data-checkout-api="https://webhook-luz-portal-dpa.bacjno.easypanel.host"></script>
  *
  * O que dispara sozinho:
  *   PageView         — toda página
@@ -12,6 +13,13 @@
  * partir do pagamento CONFIRMADO pela AbacatePay — client-side só sabia dizer
  * "alguém visitou a página de obrigado", o que inflava a contagem sem garantir
  * pagamento real. Ver webhook-kiwify-cards/src/metaCapi.ts.
+ *
+ * Checkout dinâmico (data-checkout-api): no clique, em vez de deixar o link
+ * estático navegar, criamos um checkout novo carregando fbc/fbp/user-agent
+ * do navegador — a AbacatePay devolve esses dados no webhook, e a Meta CAPI
+ * manda com muito mais qualidade de correspondência. Sem data-checkout-api,
+ * ou se a chamada falhar/demorar, cai de volta pro link estático original —
+ * o checkout nunca pode travar por causa disso.
  */
 (function () {
   'use strict';
@@ -22,9 +30,10 @@
     return null;
   })();
 
-  var PIXEL_ID = (s && s.getAttribute('data-pixel')) || window.RO2D_PIXEL_ID || '';
-  var VALOR    = parseFloat((s && s.getAttribute('data-valor')) || '0') || 0;
-  var PRODUTO  = (s && s.getAttribute('data-produto')) || document.title;
+  var PIXEL_ID     = (s && s.getAttribute('data-pixel')) || window.RO2D_PIXEL_ID || '';
+  var VALOR        = parseFloat((s && s.getAttribute('data-valor')) || '0') || 0;
+  var PRODUTO      = (s && s.getAttribute('data-produto')) || document.title;
+  var CHECKOUT_API = (s && s.getAttribute('data-checkout-api')) || '';
 
   // Sem ID configurado não faz nada — evita erro no console e evento fantasma.
   if (!/^\d{5,}$/.test(PIXEL_ID)) {
@@ -46,10 +55,34 @@
     return prefixo + '_' + Date.now() + '_' + Math.random().toString(36).slice(2, 10);
   }
 
-  /* InitiateCheckout — delegado, pega CTA adicionado depois também */
+  function lerCookie(nome) {
+    var m = document.cookie.match(new RegExp('(?:^|; )' + nome + '=([^;]*)'));
+    return m ? decodeURIComponent(m[1]) : '';
+  }
+
+  /**
+   * `_fbc` só existe depois que o Pixel processa um clique vindo de anúncio
+   * (?fbclid=...). Se a pessoa clicou no CTA antes disso rodar (raro, mas
+   * acontece em conexão lenta), sintetiza no formato que a Meta documenta —
+   * mesma origem de sinal, só que montada na hora em vez de ler do cookie.
+   */
+  function obterFbc() {
+    var doCookie = lerCookie('_fbc');
+    if (doCookie) return doCookie;
+    var fbclid = (location.search.match(/[?&]fbclid=([^&]+)/) || [])[1];
+    if (!fbclid) return '';
+    return 'fb.1.' + Date.now() + '.' + fbclid;
+  }
+
+  function navegarParaCheckout(hrefEstatico) {
+    location.href = hrefEstatico;
+  }
+
+  /* InitiateCheckout + checkout dinâmico — delegado, pega CTA adicionado depois também */
   document.addEventListener('click', function (ev) {
     var a = ev.target && ev.target.closest && ev.target.closest('a[href*="abacatepay.com/pay/"]');
     if (!a) return;
+
     try {
       fbq('track', 'InitiateCheckout', {
         content_name: PRODUTO,
@@ -57,5 +90,37 @@
         currency: 'BRL'
       }, { eventID: id('ic') });
     } catch (e) {}
+
+    // Sem endpoint de checkout dinâmico configurado nesta página: deixa o
+    // link estático navegar normalmente, sem interceptar nada.
+    if (!CHECKOUT_API) return;
+
+    ev.preventDefault();
+    var hrefEstatico = a.href;
+
+    var controle = (window.AbortController) ? new AbortController() : null;
+    var timeout = controle && setTimeout(function () { controle.abort(); }, 3000);
+
+    fetch(CHECKOUT_API + '/checkout/criar', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        fbc: obterFbc(),
+        fbp: lerCookie('_fbp'),
+        userAgent: navigator.userAgent
+      }),
+      signal: controle ? controle.signal : undefined
+    })
+      .then(function (resposta) { return resposta.ok ? resposta.json() : null; })
+      .then(function (dados) {
+        if (timeout) clearTimeout(timeout);
+        navegarParaCheckout((dados && dados.url) || hrefEstatico);
+      })
+      .catch(function () {
+        if (timeout) clearTimeout(timeout);
+        // Checkout dinâmico falhou ou demorou — o pagamento não pode travar
+        // por causa disso, cai pro link estático original.
+        navegarParaCheckout(hrefEstatico);
+      });
   }, true);
 })();
