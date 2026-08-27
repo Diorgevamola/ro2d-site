@@ -6,11 +6,12 @@
  * O que dispara sozinho:
  *   PageView         — toda página
  *   InitiateCheckout — clique em qualquer link do checkout (app.abacatepay.com/pay/)
- *   Purchase         — apenas nas páginas sob /obrigado/
  *
- * Purchase aqui é o do NAVEGADOR: mede quem chegou na página de obrigado, não quem
- * de fato pagou. A confirmação real vem do webhook. Se um dia ligarmos a API de
- * Conversões, os dois se juntam pelo mesmo eventID — por isso ele é gerado aqui.
+ * Purchase NÃO é disparado por aqui. O webhook de pagamento (webhook-cards/
+ * webhook-luz/webhook-palavra) já manda Purchase pra Meta Conversions API a
+ * partir do pagamento CONFIRMADO pela AbacatePay — client-side só sabia dizer
+ * "alguém visitou a página de obrigado", o que inflava a contagem sem garantir
+ * pagamento real. Ver webhook-kiwify-cards/src/metaCapi.ts.
  */
 (function () {
   'use strict';
@@ -57,15 +58,4 @@
       }, { eventID: id('ic') });
     } catch (e) {}
   }, true);
-
-  /* Purchase — só em /obrigado/ */
-  if (/\/obrigado\//.test(location.pathname)) {
-    try {
-      fbq('track', 'Purchase', {
-        content_name: PRODUTO,
-        value: VALOR,
-        currency: 'BRL'
-      }, { eventID: id('pur') });
-    } catch (e) {}
-  }
 })();
