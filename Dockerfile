@@ -12,6 +12,7 @@ COPY js/ /usr/share/nginx/html/js/
 COPY cards_seguranca_familiar/ /usr/share/nginx/html/cards_seguranca_familiar/
 COPY a-palavra-de-cada-dia/ /usr/share/nginx/html/a-palavra-de-cada-dia/
 COPY luz-para-cada-dia/ /usr/share/nginx/html/luz-para-cada-dia/
+COPY mentalidade_rica/ /usr/share/nginx/html/mentalidade_rica/
 COPY obrigado/ /usr/share/nginx/html/obrigado/
 
 EXPOSE 80
