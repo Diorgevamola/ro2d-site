@@ -17,3 +17,9 @@ Confirmações:
 - Os preços dos três primeiros produtos seguem suas respectivas páginas de produto.
 - O preço de Mentalidade Rica é R$ 9,99 por decisão confirmada de Diorge; esta alteração não modifica `mentalidade_rica/index.html`.
 - Todos os CTAs usam o texto `Ver produto` e apontam para rotas internas existentes.
+
+## Reconciliação com produção
+
+- Em 2026-09-01, a branch foi reconciliada por merge com `origin/main` em `ca787656be5e4f41c4188d49da99a4e667c45cd1`.
+- Foram preservadas as correções publicadas: logo e favicon `img/logo-ro2d.jpg`, página e checkout real de Mentalidade Rica e demais ajustes do deploy integrado.
+- O card simples de Mentalidade Rica vindo de `origin/main` foi substituído pelo card visual do novo grid, evitando duplicação. O card final usa `mentalidade_rica/img/capa-mentalidade-rica.png`, aponta para `/mentalidade_rica/` e mantém o preço de produção: R$ 9,99.
