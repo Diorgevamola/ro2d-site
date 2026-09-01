@@ -135,11 +135,13 @@
   .prosa strong{color:var(--nanquim);font-weight:600}
 
   /* ---------- catálogo ---------- */
-  .cat{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.4rem,3vw,2.4rem);margin-top:2.8rem}
-  @media (max-width:1024px){.cat{grid-template-columns:1fr 1fr}}
+  .cat{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(1.1rem,2.4vw,1.8rem);margin-top:2.8rem}
+  @media (max-width:1024px){.cat{grid-template-columns:repeat(2,minmax(0,1fr))}}
   @media (max-width:820px){.cat{grid-template-columns:1fr}}
-  .item{background:var(--papel);border:1px solid var(--linha);display:flex;flex-direction:column}
-  .item-fig{background:var(--papel-2);padding:clamp(1.6rem,4vw,2.4rem);display:grid;place-items:center;
+  .item{background:var(--papel);border:1px solid var(--linha);box-shadow:0 8px 20px rgba(20,36,58,.08);display:flex;flex-direction:column;
+    transition:transform .22s ease,box-shadow .22s ease}
+  .item:hover{transform:translateY(-6px);box-shadow:0 16px 30px rgba(20,36,58,.14)}
+  .item-fig{background:var(--papel-2);padding:clamp(1.25rem,3vw,1.8rem);display:grid;place-items:center;
     border-bottom:1px solid var(--linha)}
   .item-fig img{width:min(200px,64%);border:1px solid var(--linha);background:#fff;
     box-shadow:0 12px 28px rgba(20,36,58,.13);transition:transform .35s ease}
@@ -293,7 +295,7 @@
 <section id="catalogo">
   <div class="wrap">
     <p class="tec tec-reg">Catálogo</p>
-    <h2 class="sec-tit">Três baralhos publicados.</h2>
+    <h2 class="sec-tit">Quatro baralhos publicados.</h2>
 
     <div class="cat">
 
@@ -315,7 +317,7 @@
           </ul>
           <div class="item-rodape">
             <span class="preco">R$ 27<small>pagamento único</small></span>
-            <a class="btn" href="/cards_seguranca_familiar/">Ver o baralho →</a>
+            <a class="btn" href="/cards_seguranca_familiar/">Ver produto</a>
           </div>
         </div>
       </article>
@@ -338,7 +340,7 @@
           </ul>
           <div class="item-rodape">
             <span class="preco">R$ 27<small>pagamento único</small></span>
-            <a class="btn" href="/a-palavra-de-cada-dia/">Ver o baralho →</a>
+            <a class="btn" href="/a-palavra-de-cada-dia/">Ver produto</a>
           </div>
         </div>
       </article>
@@ -361,7 +363,29 @@
           </ul>
           <div class="item-rodape">
             <span class="preco">R$ 9,99<small>pagamento único</small></span>
-            <a class="btn" href="/luz-para-cada-dia/">Ver o baralho →</a>
+            <a class="btn" href="/luz-para-cada-dia/">Ver produto</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="item">
+        <div class="item-fig">
+          <img src="/mentalidade_rica/img/capa-mentalidade-rica.png" width="900" height="900" loading="lazy"
+               alt="Capa do kit Mentalidade Rica">
+        </div>
+        <div class="item-corpo">
+          <span class="sub">Mentalidade e finanças</span>
+          <h3>Mentalidade Rica</h3>
+          <p>130 cards de afirmações para fortalecer sua relação com dinheiro, abundância e valor próprio.</p>
+          <ul class="ficha">
+            <li><span>Cards</span><b>130</b></li>
+            <li><span>Trilhas</span><b>10</b></li>
+            <li><span>Formato</span><b>PDF para imprimir</b></li>
+            <li><span>Acesso</span><b>imediato</b></li>
+          </ul>
+          <div class="item-rodape">
+            <span class="preco">R$ 9,99<small>pagamento único</small></span>
+            <a class="btn" href="/mentalidade_rica/">Ver produto</a>
           </div>
         </div>
       </article>
