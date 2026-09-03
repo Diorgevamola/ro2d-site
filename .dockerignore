@@ -1,0 +1,10 @@
+.git
+.claude
+.gitignore
+docs
+DNS.md
+Dockerfile
+.dockerignore
+nginx.conf
+**/ad-video
+node_modules
