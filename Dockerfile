@@ -13,6 +13,11 @@ COPY cards_seguranca_familiar/ /usr/share/nginx/html/cards_seguranca_familiar/
 COPY a-palavra-de-cada-dia/ /usr/share/nginx/html/a-palavra-de-cada-dia/
 COPY luz-para-cada-dia/ /usr/share/nginx/html/luz-para-cada-dia/
 COPY mentalidade_rica/ /usr/share/nginx/html/mentalidade_rica/
+COPY mentalidade-rica-vol2/ /usr/share/nginx/html/mentalidade-rica-vol2/
+COPY mentalidade-rica-vol3/ /usr/share/nginx/html/mentalidade-rica-vol3/
+COPY eu-me-escolho-vol1/ /usr/share/nginx/html/eu-me-escolho-vol1/
+COPY eu-me-escolho-vol2/ /usr/share/nginx/html/eu-me-escolho-vol2/
+COPY eu-me-escolho-vol3/ /usr/share/nginx/html/eu-me-escolho-vol3/
 COPY obrigado/ /usr/share/nginx/html/obrigado/
 
 EXPOSE 80
