@@ -34,6 +34,20 @@
   var VALOR        = parseFloat((s && s.getAttribute('data-valor')) || '0') || 0;
   var PRODUTO      = (s && s.getAttribute('data-produto')) || document.title;
   var CHECKOUT_API = (s && s.getAttribute('data-checkout-api')) || '';
+  var CHECKOUT_PRODUCT = (s && s.getAttribute('data-checkout-product')) || '';
+  var produtosSemCheckout = {
+    '/mentalidade-rica-vol2/': ['mentalidade-rica-vol2', 'https://app.abacatepay.com/pay/bill_CjuzGpjrczBMRXTpp15hKYCj'],
+    '/mentalidade-rica-vol3/': ['mentalidade-rica-vol3', 'https://app.abacatepay.com/pay/bill_nEtBWPnbjjCqrtWwDuD6A65d'],
+    '/eu-me-escolho-vol1/': ['eu-me-escolho-vol1', 'https://app.abacatepay.com/pay/bill_aJ3pHAYRAJa13XeAWewu5aF5'],
+    '/eu-me-escolho-vol2/': ['eu-me-escolho-vol2', 'https://app.abacatepay.com/pay/bill_HZxrkZ4HR0JZeSwkZ5TrynUY'],
+    '/eu-me-escolho-vol3/': ['eu-me-escolho-vol3', 'https://app.abacatepay.com/pay/bill_hpxhkcR516j6zrXyMXSHmDYc']
+  };
+  var checkoutFallback = '';
+  if (!CHECKOUT_PRODUCT && produtosSemCheckout[location.pathname]) {
+    CHECKOUT_PRODUCT = produtosSemCheckout[location.pathname][0];
+    checkoutFallback = produtosSemCheckout[location.pathname][1];
+    CHECKOUT_API = CHECKOUT_API || 'https://webhook-cards-portal-dpa.bacjno.easypanel.host';
+  }
 
   // Sem ID configurado não faz nada — evita erro no console e evento fantasma.
   if (!/^\d{5,}$/.test(PIXEL_ID)) {
@@ -80,7 +94,7 @@
 
   /* InitiateCheckout + checkout dinâmico — delegado, pega CTA adicionado depois também */
   document.addEventListener('click', function (ev) {
-    var a = ev.target && ev.target.closest && ev.target.closest('a[href*="abacatepay.com/pay/"]');
+    var a = ev.target && ev.target.closest && ev.target.closest('a[data-checkout], a[href*="abacatepay.com/pay/"]');
     if (!a) return;
 
     try {
@@ -93,10 +107,13 @@
 
     // Sem endpoint de checkout dinâmico configurado nesta página: deixa o
     // link estático navegar normalmente, sem interceptar nada.
-    if (!CHECKOUT_API) return;
+    if (!CHECKOUT_API || !CHECKOUT_PRODUCT) {
+      if (a.href.indexOf('abacatepay.com/pay/') === -1) return;
+      return;
+    }
 
     ev.preventDefault();
-    var hrefEstatico = a.href;
+    var hrefEstatico = checkoutFallback || a.href;
 
     var controle = (window.AbortController) ? new AbortController() : null;
     var timeout = controle && setTimeout(function () { controle.abort(); }, 3000);
@@ -107,7 +124,8 @@
       body: JSON.stringify({
         fbc: obterFbc(),
         fbp: lerCookie('_fbp'),
-        userAgent: navigator.userAgent
+        userAgent: navigator.userAgent,
+        produto: CHECKOUT_PRODUCT
       }),
       signal: controle ? controle.signal : undefined
     })
