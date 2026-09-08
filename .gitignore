@@ -3,3 +3,6 @@ Thumbs.db
 *.log
 .env
 *.bak
+
+# Estado operacional local do AIOX
+.aiox/
