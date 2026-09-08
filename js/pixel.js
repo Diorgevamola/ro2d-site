@@ -46,7 +46,7 @@
   if (!CHECKOUT_PRODUCT && produtosSemCheckout[location.pathname]) {
     CHECKOUT_PRODUCT = produtosSemCheckout[location.pathname][0];
     checkoutFallback = produtosSemCheckout[location.pathname][1];
-    CHECKOUT_API = CHECKOUT_API || 'https://webhook-cards-portal-dpa.bacjno.easypanel.host';
+    CHECKOUT_API = CHECKOUT_API || 'https://webhook-universal-portal-dpa.bacjno.easypanel.host';
   }
 
   // Sem ID configurado não faz nada — evita erro no console e evento fantasma.
