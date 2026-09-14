@@ -118,6 +118,30 @@
   .spec{font-family:var(--tec);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
     border:1px solid var(--linha);padding:.42rem .8rem;color:var(--grafite);background:var(--papel)}
 
+  /* ---------- ponte de anúncio: reforça o gatilho antes do catálogo geral ---------- */
+  .ponte-anuncio{
+    background:var(--nanquim);color:#fff;padding-block:clamp(1.6rem,4vw,2.4rem);
+    border-top:3px solid var(--registro);border-bottom:3px solid var(--registro);
+  }
+  .ponte-grid{display:flex;align-items:center;justify-content:space-between;gap:1.6rem;flex-wrap:wrap}
+  .ponte-anuncio .tec-reg{color:#FFD9D5}
+  .ponte-h2{font-family:var(--display);font-weight:800;font-size:clamp(1.15rem,2.6vw,1.55rem);
+    color:#fff;margin:.3rem 0 .4rem;max-width:36ch}
+  .ponte-lead{color:#C7D2E0;font-size:.95rem;max-width:44ch;margin:0}
+  .ponte-btn{background:var(--registro);border-color:var(--registro);flex-shrink:0}
+  .ponte-btn:hover{background:#fff;color:var(--registro);border-color:#fff}
+  @media (max-width:720px){.ponte-grid{flex-direction:column;align-items:flex-start}.ponte-btn{width:100%;justify-content:center}}
+
+  /* item do catálogo destacado quando corresponde ao anúncio clicado */
+  .item.item-destaque{
+    position:relative;border:2px solid var(--registro);box-shadow:0 8px 24px rgba(210,53,42,.18);
+  }
+  .item.item-destaque::before{
+    content:"Você veio por causa deste";position:absolute;top:-.75rem;left:1rem;
+    background:var(--registro);color:#fff;font-family:var(--tec);font-size:.62rem;
+    letter-spacing:.08em;text-transform:uppercase;padding:.3rem .7rem;border-radius:2px;
+  }
+
   /* pilha de cartas do hero */
   .pilha{position:relative;display:grid;place-items:center;min-height:340px}
   .pilha img{width:min(230px,58%);border:1px solid var(--linha);background:#fff;
@@ -259,6 +283,22 @@
   </div>
 </section>
 
+<!-- ================= PONTE DE ANÚNCIO ================= -->
+<!-- Oculta por padrão (display:none). Só é revelada por JS quando a visita
+     vem de um anúncio pago reconhecido, reforçando a promessa do anúncio
+     antes de abrir o catálogo geral de 9 produtos. Nunca aparece para
+     tráfego orgânico/direto. -->
+<section id="ponte-anuncio" class="ponte-anuncio" style="display:none" aria-live="polite">
+  <div class="wrap ponte-grid">
+    <div>
+      <p class="tec tec-reg" id="ponte-eyebrow">Você veio pelo anúncio</p>
+      <h2 class="ponte-h2" id="ponte-titulo"></h2>
+      <p class="ponte-lead" id="ponte-texto"></p>
+    </div>
+    <a class="btn ponte-btn" id="ponte-cta" href="#catalogo">Ver este baralho &rarr;</a>
+  </div>
+</section>
+
 <!-- ================= O QUE FAZEMOS ================= -->
 <section class="offset" id="sobre">
   <div class="wrap">
@@ -293,7 +333,7 @@
 
     <div class="cat">
 
-      <article class="item">
+      <article class="item" id="cat-seguranca">
         <div class="item-fig">
           <img src="img/produto-seguranca.jpg" width="620" height="963" loading="lazy"
                alt="Capa do baralho 300 Cards de Segurança Familiar">
@@ -599,6 +639,63 @@
 
 <script>
   document.getElementById('ano').textContent = new Date().getFullYear();
+</script>
+
+<!-- ================= PONTE DE ANÚNCIO: LÓGICA ================= -->
+<!-- Lê utm_campaign/utm_content da URL (os mesmos IDs de campanha/anúncio do
+     Meta Ads) e, se reconhecer o produto anunciado, revela a faixa de ponte
+     e destaca o card correspondente no catálogo — sem alterar nada para
+     quem chega de forma orgânica/direta. Falha em silêncio se o mapa não
+     reconhecer o ID (nenhum elemento é exibido). -->
+<script>
+(function(){
+  'use strict';
+  try {
+    var params = new URLSearchParams(window.location.search);
+    // utm_content carrega o ID do anúncio (creative); utm_campaign carrega o ID da campanha.
+    // Ambos IDs do Meta são numéricos e específicos por anúncio/campanha.
+    var adContent = params.get('utm_content') || '';
+    var campaign = params.get('utm_campaign') || '';
+    var source = (params.get('utm_source') || '').toLowerCase();
+    var medium = (params.get('utm_medium') || '').toLowerCase();
+    var isPaid = medium === 'paid' || source === 'fb' || source === 'ig' || !!params.get('fbclid');
+    if (!isPaid) return;
+
+    // Mapa de produto por campanha/anúncio. Adicione entradas aqui quando
+    // novas campanhas forem lançadas para outros produtos do catálogo.
+    var PRODUCT_MAP = {
+      '120249459606420674': { // campanha [ro2d] [10/09] [vendas]
+        anchor: 'cat-seguranca',
+        eyebrow: 'Você veio pelo anúncio de Segurança Familiar',
+        titulo: 'Sua família saberia o que fazer nos primeiros 3 minutos?',
+        texto: '300 Cards de Segurança Familiar transforma respostas soltas em um plano escrito — um card por vez, sem app e sem internet.',
+        cta: 'Quero ver os 300 Cards de Segurança Familiar →'
+      }
+    };
+
+    var match = (adContent && PRODUCT_MAP[adContent]) || (campaign && PRODUCT_MAP[campaign]);
+    if (!match) return;
+
+    var ponte = document.getElementById('ponte-anuncio');
+    var titulo = document.getElementById('ponte-titulo');
+    var texto = document.getElementById('ponte-texto');
+    var eyebrow = document.getElementById('ponte-eyebrow');
+    var cta = document.getElementById('ponte-cta');
+    if (!ponte || !titulo || !texto) return;
+
+    eyebrow.textContent = match.eyebrow;
+    titulo.textContent = match.titulo;
+    texto.textContent = match.texto;
+    if (cta && match.cta) cta.textContent = match.cta;
+    if (cta) cta.setAttribute('href', '#' + match.anchor);
+    ponte.style.display = '';
+
+    var card = document.getElementById(match.anchor);
+    if (card) card.classList.add('item-destaque');
+  } catch (e) {
+    // Falha silenciosa: nunca deve quebrar a home por causa desta lógica opcional.
+  }
+})();
 </script>
 
 </body>
