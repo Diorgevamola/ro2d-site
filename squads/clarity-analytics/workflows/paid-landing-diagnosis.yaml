@@ -1,0 +1,113 @@
+workflow:
+  id: paid-landing-diagnosis
+  name: Paid Landing-Page Diagnosis
+  version: "1.0.0"
+  description: "Read-only Clarity workflow for paid campaign landing-page behavior and friction."
+  type: analytics
+  scope: clarity-analytics
+
+  metadata:
+    created: "2026-09-13"
+    author: squad-creator
+    story: "CLARITY-1.0"
+    skill: "microsoft-clarity-analytics"
+    tags: [workflow, clarity-analytics, read-only, paid-traffic]
+
+  triggers:
+    - type: manual
+      command: "*diagnose-paid-landing"
+
+  inputs:
+    - name: date_window
+      type: string
+      required: true
+      description: "Clarity-supported 1–3-day analysis window."
+    - name: campaign_id
+      type: string
+      required: false
+      description: "Optional paid campaign identifier to match against Clarity rows."
+    - name: meta_click_summary
+      type: object
+      required: false
+      description: "Optional read-only Meta delivery summary for click/session comparison."
+
+  phases:
+    - phase_1: Establish paid-session baseline
+    - phase_2: Investigate landing-page friction
+    - phase_3: Produce decision-ready report
+
+  sequence:
+    - step: analyze_paid_traffic
+      id: baseline
+      phase: 1
+      phase_name: "Establish paid-session baseline"
+      agent: clarity-analyst
+      action: "Analyze paid traffic by source, medium, and campaign"
+      task: analyze-paid-traffic
+      inputs:
+        date_window: "{{inputs.date_window}}"
+        campaign_id: "{{inputs.campaign_id}}"
+        comparison_scope: "{{inputs.meta_click_summary}}"
+      creates: paid_session_report
+      outputs: [paid_session_report]
+      next: investigate_friction
+      on_failure: stop_with_access_diagnostic
+
+    - step: investigate_friction
+      id: friction
+      phase: 2
+      phase_name: "Investigate landing-page friction"
+      agent: clarity-analyst
+      action: "Measure and investigate paid-session friction signals"
+      task: investigate-session-friction
+      requires: paid_session_report
+      inputs:
+        date_window: "{{inputs.date_window}}"
+        campaign_or_landing_page: "{{inputs.campaign_id}}"
+      creates: friction_report
+      outputs: [friction_report]
+      next: report_insights
+      on_failure: report_partial_findings
+
+    - step: report_insights
+      id: report
+      phase: 3
+      phase_name: "Produce decision-ready report"
+      agent: clarity-analyst
+      action: "Synthesize verified findings, inferences, and next actions"
+      task: report-clarity-insights
+      requires: friction_report
+      inputs:
+        paid_session_report: "{{paid_session_report}}"
+        friction_report: "{{friction_report}}"
+        meta_summary_optional: "{{inputs.meta_click_summary}}"
+      creates: executive_report
+      outputs: [executive_report, next_actions, measurement_gaps]
+      on_complete:
+        status: success
+
+    - workflow_end: true
+      id: complete
+      action: workflow_complete
+
+  error_handling:
+    - id: stop_with_access_diagnostic
+      action: report
+      message: "Stop after documenting the Clarity MCP/API access error. Do not substitute another source."
+    - id: report_partial_findings
+      action: report
+      message: "Report the verified paid-session baseline and clearly mark friction analysis as unavailable."
+
+  outputs:
+    - name: report
+      from: "{{executive_report}}"
+      description: "Read-only paid landing-page diagnostic report."
+
+  completion:
+    on_success:
+      message: "Paid landing-page diagnosis completed."
+      notify: false
+    on_failure:
+      message: "Paid landing-page diagnosis could not complete."
+      notify: true
+      rollback: false

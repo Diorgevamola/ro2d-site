@@ -1,0 +1,38 @@
+name: clarity-analytics
+version: 1.0.0
+description: Read-only Microsoft Clarity analysis for paid landing-page traffic.
+author: Diorge
+license: MIT
+slashPrefix: clarity-analytics
+aiox:
+  minVersion: 2.1.0
+  type: squad
+components:
+  tasks:
+    - analyze-paid-traffic.md
+    - investigate-session-friction.md
+    - report-clarity-insights.md
+  agents:
+    - clarity-analyst.md
+  workflows:
+    - paid-landing-diagnosis.yaml
+  checklists: []
+  templates: []
+  tools: []
+  scripts: []
+config:
+  extends: extend
+  coding-standards: config/coding-standards.md
+  tech-stack: config/tech-stack.md
+  source-tree: config/source-tree.md
+dependencies:
+  node: []
+  python: []
+  squads: []
+tags:
+  - custom
+blueprint:
+  source:
+    - docs/stories/STORY-CLARITY-1.0-analytics-squad.md
+  created_at: "2026-09-13T00:00:00Z"
+  confidence: 0.94

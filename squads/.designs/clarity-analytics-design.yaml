@@ -1,0 +1,46 @@
+squad:
+  name: clarity-analytics
+  description: "Read-only Microsoft Clarity analysis for paid landing-page traffic."
+  domain: web-analytics
+
+analysis:
+  entities: [Clarity project, paid session, campaign, landing page, friction signal]
+  workflows: [paid-traffic-diagnosis, session-friction-investigation, insight-reporting]
+  integrations: [Microsoft Clarity MCP, Microsoft Clarity Data Export API, Meta Ads]
+  stakeholders: [marketing operator, web operator]
+
+recommendations:
+  agents:
+    - id: clarity-analyst
+      role: "Microsoft Clarity Analytics Specialist"
+      commands: [analyze-paid-traffic, investigate-session-friction, report-clarity-insights]
+      confidence: 0.95
+      user_added: true
+      user_modified: true
+  tasks:
+    - name: analyze-paid-traffic
+      agent: clarity-analyst
+      entrada: [date_window, source_medium_campaign_breakdown]
+      saida: [paid_session_report, campaign_mapping, metric_limitations]
+      checklist: ["Use only read-only Clarity access", "State exact date range", "Separate Meta clicks from Clarity sessions", "Return source medium campaign data"]
+      confidence: 0.95
+    - name: investigate-session-friction
+      agent: clarity-analyst
+      entrada: [date_window, campaign_or_landing_page, friction_threshold]
+      saida: [friction_report, recording_sample, prioritized_hypotheses]
+      checklist: ["Query dead clicks rage clicks quick backs and script errors", "Bound recordings by date and scope", "Do not expose personal data", "Label hypotheses as inference"]
+      confidence: 0.94
+    - name: report-clarity-insights
+      agent: clarity-analyst
+      entrada: [paid_session_report, friction_report, meta_summary_optional]
+      saida: [executive_report, next_actions, measurement_gaps]
+      checklist: ["State facts before inference", "Do not claim purchases from Clarity", "Prioritize technical defects affecting paid sessions", "Include measurement limitations"]
+      confidence: 0.93
+  template: basic
+  config_mode: extend
+
+metadata:
+  created_at: "2026-09-13T00:00:00Z"
+  source_docs: ["docs/stories/STORY-CLARITY-1.0-analytics-squad.md"]
+  user_adjustments: 1
+  overall_confidence: 0.94
