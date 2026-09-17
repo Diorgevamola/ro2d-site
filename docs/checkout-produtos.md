@@ -10,6 +10,7 @@ produtos avulsos de R$ 9,99, com checkout PIX:
 | Eu Me Escolho Vol. 1 | `prod_FZ1fqLtpEwj5UUgRJgyj1AHq` | `bill_aJ3pHAYRAJa13XeAWewu5aF5` |
 | Eu Me Escolho Vol. 2 | `prod_EcX3nWRGYQt014exjZ6RFnut` | `bill_HZxrkZ4HR0JZeSwkZ5TrynUY` |
 | Eu Me Escolho Vol. 3 | `prod_HRzhHwauabLHzPCZTjBR1zsP` | `bill_hpxhkcR516j6zrXyMXSHmDYc` |
+| 120 Cards Reconecta a Dois | `prod_rpzEnrL5rHtqnwp0EYphLKkG` | `bill_XeRBdx13PsjBF2YzaEfwuRqK` |
 
 Os links completos estão no mapa de fallback de `js/pixel.js`. Os CTAs das
 páginas usam o checkout dinâmico quando o webhook multi-produto estiver

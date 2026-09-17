@@ -40,7 +40,8 @@
     '/mentalidade-rica-vol3/': ['mentalidade-rica-vol3', 'https://app.abacatepay.com/pay/bill_nEtBWPnbjjCqrtWwDuD6A65d'],
     '/eu-me-escolho-vol1/': ['eu-me-escolho-vol1', 'https://app.abacatepay.com/pay/bill_aJ3pHAYRAJa13XeAWewu5aF5'],
     '/eu-me-escolho-vol2/': ['eu-me-escolho-vol2', 'https://app.abacatepay.com/pay/bill_HZxrkZ4HR0JZeSwkZ5TrynUY'],
-    '/eu-me-escolho-vol3/': ['eu-me-escolho-vol3', 'https://app.abacatepay.com/pay/bill_hpxhkcR516j6zrXyMXSHmDYc']
+    '/eu-me-escolho-vol3/': ['eu-me-escolho-vol3', 'https://app.abacatepay.com/pay/bill_hpxhkcR516j6zrXyMXSHmDYc'],
+    '/cards_reconecta_casal/': ['reconecta-a-dois', 'https://app.abacatepay.com/pay/bill_XeRBdx13PsjBF2YzaEfwuRqK']
   };
   var checkoutFallback = '';
   if (!CHECKOUT_PRODUCT && produtosSemCheckout[location.pathname]) {
