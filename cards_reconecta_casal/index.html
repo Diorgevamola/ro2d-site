@@ -473,5 +473,20 @@ document.addEventListener('DOMContentLoaded', async function() {
   setTimeout(function () { ensure(); obs.disconnect(); }, 15000);
 })();
 </script>
+<script>
+(function () {
+  var css = 'section h1,section h2{position:relative!important;z-index:2!important}';
+  function inject() {
+    if (document.getElementById('ro2d-titles-fix')) return;
+    var s = document.createElement('style');
+    s.id = 'ro2d-titles-fix';
+    s.textContent = css;
+    document.head.appendChild(s);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', inject);
+  } else { inject(); }
+})();
+</script>
 </body>
 </html>
