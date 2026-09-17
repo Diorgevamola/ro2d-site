@@ -402,5 +402,42 @@ document.addEventListener('DOMContentLoaded', async function() {
   }, true);
 })();
 </script>
+<script>
+(function () {
+  var SLOTS = {
+    "hero-box": {"src": "img/hero-caixa-cards.png", "alt": "Caixa Reconecta a Dois com cartas"},
+    "why-box": {"src": "img/why-caixa.png", "alt": "Caixa Reconecta a Dois"},
+    "for-whom-cards": {"src": "img/for-whom-cartas.png", "alt": "Cartas do jogo espalhadas"},
+    "whats-inside": {"src": "img/inside-cartas-caixa.png", "alt": "O que vem no kit"},
+  };
+  function fill() {
+    var done = 0;
+    Object.keys(SLOTS).forEach(function (id) {
+      var slot = document.getElementById(id);
+      if (!slot) return;
+      var img = document.createElement('img');
+      img.src = SLOTS[id].src;
+      img.alt = SLOTS[id].alt;
+      var st = slot.getAttribute('style');
+      if (st) img.setAttribute('style', st);
+      img.style.objectFit = 'cover';
+      img.style.borderRadius = '10px';
+      img.style.display = 'block';
+      slot.replaceWith(img);
+      done++;
+    });
+    return done;
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', fill);
+  } else { fill(); }
+  var tries = 0;
+  var timer = setInterval(function () {
+    tries++;
+    var n = fill();
+    if (n > 0 || tries > 40) clearInterval(timer);
+  }, 500);
+})();
+</script>
 </body>
 </html>
