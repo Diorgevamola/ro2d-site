@@ -439,5 +439,39 @@ document.addEventListener('DOMContentLoaded', async function() {
   }, 500);
 })();
 </script>
+<script>
+/* RO2D-RESPONSIVE-OVERRIDES (outer-shell): correcoes responsivas sem tocar no bundle.
+   <style> puro no body e removido pelo framework no mount; por isso injetado via script
+   (mesmo precedente dos scripts de checkout/imagens), com re-injecao defensiva. */
+(function () {
+  var CSS = `html, body { overflow-x: hidden; overflow-x: clip; }
+#dc-root, #dc-root .sc-host, #dc-root section { overflow-x: hidden; overflow-x: clip; }
+/* Ondas decorativas do template (left:-12%;width:124%) estouravam a pagina em 12% da viewport:
+   contidas na largura da secao sem alterar textos, cores ou estrutura. */
+#dc-root div[style*="absolute"][style*="124%"] { left: 0 !important; width: 100% !important; }
+#dc-root img { max-width: 100% !important; height: auto !important; }
+#dc-root button { min-height: 44px !important; padding-top: 12px !important; padding-bottom: 12px !important; font-size: 14px !important; }
+@media (max-width: 640px) {
+  #dc-root section > div { flex-wrap: wrap !important; }
+  #dc-root button { width: min(100%, 320px); min-width: 200px; max-width: min(100%, 340px); }
+  #dc-root p { font-size: 14px !important; line-height: 1.6 !important; }
+  #dc-root span[data-dc-tpl="9"], #dc-root p[data-dc-tpl="26"], #dc-root p[data-dc-tpl="115"], #dc-root span.sc-interp { font-size: 12px !important; }
+}`;
+  function ensure() {
+    if (!document.getElementById('ro2d-responsive-overrides')) {
+      var st = document.createElement('style');
+      st.id = 'ro2d-responsive-overrides';
+      st.textContent = CSS;
+      (document.head || document.documentElement).appendChild(st);
+    }
+  }
+  ensure();
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ensure);
+  window.addEventListener('load', ensure);
+  var obs = new MutationObserver(function () { ensure(); });
+  obs.observe(document.documentElement, { childList: true, subtree: false });
+  setTimeout(function () { ensure(); obs.disconnect(); }, 15000);
+})();
+</script>
 </body>
 </html>
