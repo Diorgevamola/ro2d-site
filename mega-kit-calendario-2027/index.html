@@ -114,7 +114,9 @@
   .card h3{margin:0;font-size:14px;font-weight:600;line-height:1.3}
   .card .p{margin-top:auto;font-weight:700}
   .card .p s{color:var(--muted);font-weight:400;margin-left:.4rem}
-  .card .go{margin-top:.5rem;border:1px solid var(--brand);color:var(--brand);background:#fff;border-radius:6px;height:38px;font-weight:600;font-size:13px}
+  .card .go{margin-top:.5rem;border:1px solid var(--brand);color:var(--brand);background:#fff;border-radius:6px;height:38px;font-weight:600;font-size:13px;display:grid;place-items:center}
+  .card .im img{width:100%;height:100%;object-fit:cover}
+  .card:hover{border-color:var(--brand)}
 
   /* faq */
   .faq-sec{padding:2.2rem 0;border-top:1px solid var(--line)}
@@ -262,11 +264,15 @@
   <section class="rec" aria-labelledby="rec-t">
     <h2 id="rec-t">Você também pode gostar</h2>
     <div class="cards">
-      <!-- PENDENTE: produtos reais da loja -->
-      <article class="card"><div class="im"><span class="tag">-0%</span>Imagem</div><div class="tx"><h3>Produto relacionado 1</h3><div class="p">R$ 0,00<s>R$ 0,00</s></div><button class="go" type="button">Ver produto</button></div></article>
-      <article class="card"><div class="im"><span class="tag">-0%</span>Imagem</div><div class="tx"><h3>Produto relacionado 2</h3><div class="p">R$ 0,00<s>R$ 0,00</s></div><button class="go" type="button">Ver produto</button></div></article>
-      <article class="card"><div class="im">Imagem</div><div class="tx"><h3>Produto relacionado 3</h3><div class="p">R$ 0,00</div><button class="go" type="button">Ver produto</button></div></article>
-      <article class="card"><div class="im">Imagem</div><div class="tx"><h3>Produto relacionado 4</h3><div class="p">R$ 0,00</div><button class="go" type="button">Ver produto</button></div></article>
+      <a class="card" href="/cards_seguranca_familiar/"><div class="im"><img src="/img/produto-seguranca.jpg" alt="Segurança Familiar — 300 Cards" loading="lazy"></div><div class="tx"><h3>Segurança Familiar — 300 Cards</h3><div class="p">R$ 27,00</div><span class="go">Ver produto</span></div></a>
+      <a class="card" href="/a-palavra-de-cada-dia/"><div class="im"><img src="/img/produto-biblicos.jpg" alt="A Palavra de Cada Dia — 365 Cards Bíblicos" loading="lazy"></div><div class="tx"><h3>A Palavra de Cada Dia — 365 Cards Bíblicos</h3><div class="p">R$ 27,00</div><span class="go">Ver produto</span></div></a>
+      <a class="card" href="/luz-para-cada-dia/"><div class="im"><img src="/luz-para-cada-dia/img/capa-pack-3.jpg" alt="Luz para Cada Dia — 354 Cards Bíblicos" loading="lazy"></div><div class="tx"><h3>Luz para Cada Dia — 354 Cards Bíblicos</h3><div class="p">R$ 9,99</div><span class="go">Ver produto</span></div></a>
+      <a class="card" href="/mentalidade_rica/"><div class="im"><img src="/mentalidade_rica/img/capa-mentalidade-rica.png" alt="Mentalidade Rica Vol. 1 — O Despertar" loading="lazy"></div><div class="tx"><h3>Mentalidade Rica Vol. 1 — O Despertar</h3><div class="p">R$ 9,99</div><span class="go">Ver produto</span></div></a>
+      <a class="card" href="/mentalidade-rica-vol2/"><div class="im"><img src="/mentalidade-rica-vol2/img/capa-mentalidade-rica-vol2.png" alt="Mentalidade Rica Vol. 2 — A Expansão" loading="lazy"></div><div class="tx"><h3>Mentalidade Rica Vol. 2 — A Expansão</h3><div class="p">R$ 9,99</div><span class="go">Ver produto</span></div></a>
+      <a class="card" href="/mentalidade-rica-vol3/"><div class="im"><img src="/mentalidade-rica-vol3/img/capa-mentalidade-rica-vol3.png" alt="Mentalidade Rica Vol. 3 — A Virada Financeira" loading="lazy"></div><div class="tx"><h3>Mentalidade Rica Vol. 3 — A Virada Financeira</h3><div class="p">R$ 9,99</div><span class="go">Ver produto</span></div></a>
+      <a class="card" href="/eu-me-escolho-vol1/"><div class="im"><img src="/eu-me-escolho-vol1/img/capa-eu-me-escolho-vol1.jpg" alt="Eu Me Escolho Vol. 1 — O Retorno a Si" loading="lazy"></div><div class="tx"><h3>Eu Me Escolho Vol. 1 — O Retorno a Si</h3><div class="p">R$ 9,99</div><span class="go">Ver produto</span></div></a>
+      <a class="card" href="/eu-me-escolho-vol2/"><div class="im"><img src="/eu-me-escolho-vol2/img/capa-eu-me-escolho-vol2.jpg" alt="Eu Me Escolho Vol. 2 — A Coragem de Ser" loading="lazy"></div><div class="tx"><h3>Eu Me Escolho Vol. 2 — A Coragem de Ser</h3><div class="p">R$ 9,99</div><span class="go">Ver produto</span></div></a>
+      <a class="card" href="/eu-me-escolho-vol3/"><div class="im"><img src="/eu-me-escolho-vol3/img/capa-eu-me-escolho-vol3.jpg" alt="Eu Me Escolho Vol. 3 — A Liberdade de Viver" loading="lazy"></div><div class="tx"><h3>Eu Me Escolho Vol. 3 — A Liberdade de Viver</h3><div class="p">R$ 9,99</div><span class="go">Ver produto</span></div></a>
     </div>
   </section>
 
