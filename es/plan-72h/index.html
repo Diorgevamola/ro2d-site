@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan 72h · La guía familiar para imprimir y rellenar</title>
+<meta name="description" content="Plan 72h: 125 páginas para organizar agua, alimentos, salud, comunicación y rutas de tu familia durante 72 horas. PDF para imprimir o rellenar en pantalla.">
+<meta name="robots" content="noindex, nofollow">
+<!--
+  ESTRUCTURA y ESTILO inspirados en la página del concorrente "Casa Refugio Protocolo 72 Horas":
+  tema oscuro, hero con foto de fondo y panel de oferta a la derecha, secciones en tarjetas, iconos en recuadros.
+  Textos, marca, imágenes y colores exactos son nuestros. Nada copiado literalmente.
+  PENDENTE (buscar "PENDENTE"): preço final, link de checkout, prazo de garantia/texto legal, dados do vendedor,
+  política de privacidade/devoluções, e-mail de suporte. Sem pixel/GA: na UE exige consentimento antes de carregar.
+  Sem fuentes externas a propósito (RGPD): se usa una pila de fuentes del sistema.
+-->
+<style>
+  :root{--bg:#05080f;--card:#121b2d;--line:#1a2638;--ink:#eaf0f8;--mut:#a9b9cc;--gold:#f8b040;--gold2:#e8962b;--ok:#5fd0a4;
+        --head:"Bahnschrift","Oswald","Roboto Condensed","Arial Narrow","Franklin Gothic Medium",Impact,sans-serif;
+        --body:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#05080f;color:var(--ink);font:16px/1.6 var(--body)}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--head);text-transform:uppercase;letter-spacing:.02em;line-height:1.08;margin:0;font-weight:700;font-stretch:condensed;font-variation-settings:"wdth" 75}
+  .w{width:min(1120px,100% - 2rem);margin-inline:auto}
+  .col{width:min(1120px,100% - 2rem);margin-inline:auto}
+  .kick{display:block;color:var(--gold);font-size:.72rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin-bottom:.5rem}
+  .kick:before{content:"✦ "}
+  .bar{background:#05080f;border-bottom:1px solid #152032;color:var(--mut);font-size:.78rem;overflow:hidden;white-space:nowrap}
+  .bar div{display:inline-flex;gap:2.4rem;padding:.55rem 1rem;animation:m 32s linear infinite}
+  @keyframes m{to{transform:translateX(-50%)}}
+  .hero{position:relative;isolation:isolate;padding:clamp(1.6rem,4vw,2.6rem) 0 clamp(1.4rem,3vw,2.2rem)}
+  .hero:before{content:none}
+  .hero:after{content:none}
+  .hero .g{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(1.2rem,3vw,2.2rem);align-items:start}
+  .poster{margin:0;position:sticky;top:1rem}
+  .poster img{width:100%;border-radius:18px;border:1px solid #f8b04077;box-shadow:0 0 0 1px #000,0 0 46px -18px var(--gold)}
+  .stack>*+*{margin-top:.8rem}
+  .stack h1{font-size:clamp(1.9rem,4.4vw,3.1rem);text-align:center;line-height:1.02}
+  .stack .lead{text-align:center;max-width:none;margin:.9rem 0 0}
+  .tcard{display:flex;gap:.8rem;align-items:center;background:linear-gradient(150deg,#1b2740,#0e1627);border:1px solid #f8b04066;border-radius:14px;padding:.8rem .95rem;box-shadow:0 0 30px -18px var(--gold)}
+  .tcard .ic{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#f0b23a22;border:1px solid #f0b23a66;font-size:1.05rem;color:var(--gold)}
+  .tcard b{display:block;font-size:.93rem;line-height:1.3}.tcard small{display:block;color:var(--mut);font-size:.8rem;line-height:1.4;margin-top:.15rem}
+  .chip{display:inline-block;border:1px solid var(--gold);color:var(--gold);border-radius:99px;padding:.28rem .85rem;font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:#0a142499}
+  .big{display:block;font-size:clamp(3.4rem,10vw,6.4rem);color:var(--gold);margin:.9rem 0 .3rem;text-shadow:0 6px 30px #000a}
+  .hero h1{font-size:clamp(1.7rem,4.6vw,2.9rem)}
+  .hero h1 em{font-style:normal;color:var(--gold)}
+  .hero .lead{max-width:50ch;margin:1.1rem 0 0;color:#dbe5f1;font-size:1.06rem}
+  .hero .src{max-width:52ch;margin-top:1.1rem;font-size:.85rem;color:var(--mut);border-left:3px solid var(--gold);padding-left:.8rem}
+  .panel{background:linear-gradient(150deg,#1b2740 0%,#0e1627 58%,#1d1a17 100%);border:1px solid #f8b04066;border-radius:18px;padding:1.2rem;box-shadow:0 0 0 1px #0006,0 25px 60px -25px #000,0 0 40px -18px var(--gold);backdrop-filter:blur(6px)}
+  .prod{display:flex;gap:.9rem;align-items:center;padding-bottom:.9rem;border-bottom:1px solid var(--line)}
+  .prod img{width:62px;border-radius:6px;border:1px solid #ffffff22}
+  .prod b{display:block;font-family:var(--head);text-transform:uppercase;font-size:1.05rem}
+  .prod span{color:var(--mut);font-size:.85rem}
+  .panel ul{list-style:none;margin:.9rem 0;padding:0}
+  .panel li{display:flex;gap:.6rem;padding:.4rem 0;font-size:.93rem;border-bottom:1px dashed #ffffff18}
+  .panel li:before{content:"✓";color:var(--ok);font-weight:800}
+  .price{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap;margin:.7rem 0 .6rem}
+  .price strong{font-family:var(--head);font-stretch:condensed;font-size:3.3rem;color:var(--gold);line-height:1}
+  .price small{color:var(--mut)}
+  .btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:56px;background:linear-gradient(180deg,#ffd77a,var(--gold) 55%,var(--gold2));color:#2a1a02;font-family:var(--head);text-transform:uppercase;font-size:1.2rem;font-weight:800;letter-spacing:.03em;text-decoration:none;border:0;border-radius:12px;padding:.9rem 1.2rem;cursor:pointer;box-shadow:0 0 0 2px #f8b04066,0 0 34px -4px #f8b040aa}
+  .btn:hover{filter:brightness(1.07)}
+  .btn[aria-disabled=true]{opacity:.65;pointer-events:none}
+  .note{font-size:.8rem;color:var(--mut);text-align:center;margin:.7rem 0 0}
+  .gar{display:flex;gap:.9rem;align-items:center;margin-top:1rem;background:#0b1322;border:1px solid #1f2c42;border-radius:14px;padding:.8rem}
+  .gar .d{flex:none;width:62px;height:62px;border-radius:50%;background:linear-gradient(180deg,#ffd77a,var(--gold2));color:#2a1a02;display:grid;place-items:center;text-align:center;line-height:1;font-family:var(--head);font-weight:800}
+  .gar .d b{display:block;font-size:1.6rem}.gar .d span{font-size:.55rem;letter-spacing:.14em}
+  .gar h3{font-size:.95rem}.gar p{margin:.15rem 0 0;font-size:.82rem;color:var(--mut)}
+  main .col{padding-block:1rem}
+  .sec{background:linear-gradient(150deg,#19243a 0%,#0e1627 52%,#1b1917 100%);border:1px solid #152032;border-radius:18px;padding:clamp(1.2rem,3.5vw,1.8rem);margin:1.1rem 0;text-align:center}
+  .sec h2{font-size:clamp(1.7rem,4.6vw,2.7rem);line-height:1.02}
+  .sec>p.sub{color:var(--mut);max-width:58ch;margin:.7rem auto 0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.7rem;margin-top:1.3rem;text-align:left}
+  .item{background:linear-gradient(150deg,#1b2740 0%,#111a2d 70%,#17161a 100%);border:1px solid #1f2c42;border-radius:14px;padding:.9rem}
+  .ico{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;background:#f0b23a22;border:1px solid #f0b23a44;font-size:1.15rem;margin-bottom:.55rem}
+  .item h3{font-size:1rem;text-transform:none;font-family:var(--body);font-weight:800;letter-spacing:0}
+  .item p{margin:.25rem 0 0;font-size:.86rem;color:var(--mut)}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-top:1.3rem;text-align:left}
+  .two .item ul{margin:.5rem 0 0;padding-left:1.1rem;color:var(--mut);font-size:.88rem}
+  .two .yes{border-color:#f0b23a88;background:linear-gradient(180deg,#2a2210,#0b182b);box-shadow:0 0 28px -14px var(--gold)}
+  .prev{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.7rem;margin-top:1.3rem}
+  .prev figure{margin:0;background:#fff;border-radius:10px;overflow:hidden;text-align:left}
+  .prev img{width:100%;aspect-ratio:595/842;object-fit:cover;object-position:top}
+  .prev figcaption{background:#0a1424;color:#fff;padding:.6rem .7rem;font-size:.8rem;font-weight:700;line-height:1.3}
+  .prev figcaption b{color:var(--gold)}
+  .show{display:flex;gap:1.1rem;align-items:center;text-align:left;margin-top:1.3rem;background:linear-gradient(150deg,#1b2740,#111a2d);border:1px solid #1f2c42;border-radius:14px;padding:.9rem}
+  .show img{width:110px;flex:none;border-radius:8px;border:1px solid #ffffff22}
+  .badge{display:inline-block;background:var(--gold);color:#2a1a02;font-size:.65rem;font-weight:800;letter-spacing:.1em;border-radius:99px;padding:.1rem .55rem;margin-left:.4rem;vertical-align:2px}
+  .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem}.tags span{background:#0a1424;border:1px solid var(--line);border-radius:99px;padding:.15rem .6rem;font-size:.75rem;color:var(--mut)}
+  .pills{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:1.2rem}
+  .pills span{background:#0b1322;border:1px solid #1f2c42;border-radius:99px;padding:.4rem .95rem;font-size:.85rem;font-weight:700}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.7rem;margin-top:1.3rem;text-align:left}
+  .steps .item .n{display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:#0a1424;border:1px solid var(--line);font-family:var(--head);font-size:1.1rem;margin-bottom:.55rem}
+  details{background:#0b1322;border:1px solid #1f2c42;border-radius:12px;padding:.9rem 1.1rem;margin-bottom:.55rem;text-align:left}
+  summary{cursor:pointer;font-weight:700}
+  details p{margin:.55rem 0 0;color:var(--mut);font-size:.93rem}
+  .cta-final .btn{max-width:420px;margin:1.2rem auto 0}
+  footer{border-top:1px solid #152032;color:var(--mut);font-size:.8rem;padding:1.8rem 0 6.5rem}
+  footer a{color:var(--ink)}
+  .sticky{position:fixed;left:0;right:0;bottom:0;z-index:20;background:#05080fee;border-top:1px solid var(--line);padding:.6rem 1rem calc(.6rem + env(safe-area-inset-bottom));display:none;align-items:center;justify-content:space-between;gap:.8rem;backdrop-filter:blur(8px)}
+  .sticky b{font-family:var(--head);font-size:1.3rem;color:var(--gold)}
+  .sticky a{background:linear-gradient(180deg,#ffd77a,var(--gold2));color:#2a1a02;font-weight:800;text-decoration:none;border-radius:10px;padding:.75rem 1.2rem;white-space:nowrap}
+  @media(max-width:860px){.hero .g,.two{grid-template-columns:1fr}.poster{position:static;max-width:360px;margin-inline:auto}.show{flex-direction:column;text-align:center}.sticky{display:flex}.hero:after{background:linear-gradient(180deg,#0a1424ee 0%,#0a1424cc 60%,#0a1424 100%)}}
+  @media(prefers-reduced-motion:reduce){.bar div{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="bar" aria-hidden="true"><div>
+  <span>📄 125 páginas · 13 partes</span><span>🖨️ Para imprimir o rellenar en pantalla</span><span>⬇️ Descarga inmediata en PDF</span><span>🛡️ Garantía de devolución</span><span>🔒 Pago seguro</span>
+  <span>📄 125 páginas · 13 partes</span><span>🖨️ Para imprimir o rellenar en pantalla</span><span>⬇️ Descarga inmediata en PDF</span><span>🛡️ Garantía de devolución</span><span>🔒 Pago seguro</span>
+</div></div>
+
+<header class="hero">
+  <div class="w g">
+    <figure class="poster"><img src="img/portada.jpg" alt="Portada del Plan 72h, versión oro" width="760" height="1074"></figure>
+    <div class="stack">
+      <div style="text-align:center"><span class="chip">Guía familiar · Edición 2026</span></div>
+      <h1><em>Tres días sin luz ni agua:</em> que vuestra familia ya tenga el plan por escrito</h1>
+      <p class="lead">Una guía de 125 páginas para organizar agua, alimentos, salud, comunicación y rutas. La imprimís o la rellenáis en pantalla, y queda lista para el día en que haga falta.</p>
+      <div class="tcard"><span class="ic">✓</span><div><b>Con fuentes oficiales para comprobar cada dato</b><small>La guía incluye una sección de fuentes y alertas. Ningún organismo la patrocina ni la avala.</small></div></div>
+      <div class="tcard"><span class="ic">🖨️</span><div><b>Para imprimir o rellenar en pantalla</b><small>Cuando se va la luz, el papel no depende de la batería. Y los campos también se rellenan en el ordenador.</small></div></div>
+      <aside class="panel" id="oferta" aria-label="Oferta">
+        <div class="prod"><img src="img/portada-s.jpg" alt="" width="62" height="88"><div><b>Plan 72h · Versión Oro</b><span>Guía en PDF · 125 páginas</span></div></div>
+        <ul>
+          <li>Plan 72h completo, 125 páginas en PDF</li>
+          <li>Campos para rellenar en pantalla, sin imprimir</li>
+          <li>Fichas para bebés, mascotas y personas mayores</li>
+          <li>Fichas rápidas de decisión y formularios de salud</li>
+          <li>Simulacro familiar de 20 minutos</li>
+        </ul>
+        <div class="price">
+          <!-- PENDENTE: confirmar preço final. 14,90 € = mesmo número do concorrente (que cobra US$ 14,90; preço de lista US$ 37). -->
+          <strong>14,90 €</strong><small>Pago único · descarga inmediata</small>
+        </div>
+        <!-- checkout Hotmart ligado -->
+        <a class="btn" href="https://pay.hotmart.com/K108448589X" rel="noopener">Quiero mi Plan 72h</a>
+        <p class="note">Sin suscripción. Lo recibís por correo en cuanto se confirma el pago.</p>
+        <div class="gar">
+          <div class="d"><div><b>14</b><span>DÍAS</span></div></div>
+          <div>
+            <h3>Garantía de devolución</h3>
+            <!-- PENDENTE: confirmar prazo e texto com assessoria (direito de desistência na UE para conteúdo digital). -->
+            <p>Si el Plan 72h no os resulta útil, pedid la devolución dentro del plazo indicado y os devolvemos el importe.</p>
+          </div>
+        </div>
+      </aside>
+      <p class="src" style="margin-top:.9rem">Material educativo y preventivo. Ante una emergencia, seguid siempre los avisos de las autoridades y llamad al 112.</p>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="col">
+
+  <section class="sec">
+    <span class="kick">Por qué existe esta guía</span>
+    <h2>Improvisar cuesta tiempo cuando falta lo básico</h2>
+    <p class="sub">Un apagón largo, una tormenta o un corte de agua en casa. Sin un plan, cada decisión se toma con prisa; con uno escrito, ya está pensada.</p>
+    <div class="grid">
+      <div class="item"><div class="ico">🧭</div><h3>«No sé por dónde empezar»</h3><p>La guía empieza por los primeros 30 minutos y sigue con una línea de tiempo de las 72 horas.</p></div>
+      <div class="item"><div class="ico">📵</div><h3>Sin luz, sin móvil, sin internet</h3><p>Contactos, puntos de encuentro y mensajes preparados, en papel, para cuando no hay señal.</p></div>
+      <div class="item"><div class="ico">🚰</div><h3>Se corta el agua</h3><p>Cuánta reservar por persona, cómo guardarla y cuándo tratarla o no usarla.</p></div>
+      <div class="item"><div class="ico">👶</div><h3>Bebés, mayores y mascotas</h3><p>Fichas propias para quien necesita más cuidado: medicación, movilidad, alimentación.</p></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <span class="kick">Por qué en papel</span>
+    <h2>Sin batería, el papel sigue funcionando</h2>
+    <p class="sub">Una guía guardada en el móvil sirve hasta que se agota. Por eso el Plan 72h está pensado para imprimirse, y también para rellenarse en pantalla antes.</p>
+    <div class="two">
+      <div class="item"><h3>📱 Si solo está en el móvil</h3><ul><li>Depende de la batería</li><li>Sin cobertura no se puede consultar</li><li>Compite con las llamadas por la misma batería</li></ul></div>
+      <div class="item yes"><h3>🖨️ Con el Plan 72h impreso</h3><ul><li>Teléfonos y puntos de encuentro en papel</li><li>Cualquiera en casa puede seguir los pasos</li><li>Fichas rápidas listas en la nevera o en la mochila</li></ul></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <span class="kick">Cómo está organizado</span>
+    <h2>Siete áreas que tienen que funcionar juntas</h2>
+    <p class="sub">Lo práctico, lo sanitario y lo familiar en un solo plan, repartido en 13 partes.</p>
+    <div class="grid">
+      <div class="item"><div class="ico">💧</div><h3>1 · Agua</h3><p>Reserva para 72 horas, almacenamiento y tratamiento paso a paso.</p></div>
+      <div class="item"><div class="ico">🥫</div><h3>2 · Alimentos</h3><p>Menú sin cocinar, nevera y congelador sin luz, compras por prioridad.</p></div>
+      <div class="item"><div class="ico">🔦</div><h3>3 · Energía</h3><p>Luz segura, autonomía sin electricidad y vuelta segura del suministro.</p></div>
+      <div class="item"><div class="ico">🩹</div><h3>4 · Salud</h3><p>Botiquín, medicación continua, equipos médicos y señales de alerta.</p></div>
+      <div class="item"><div class="ico">📻</div><h3>5 · Comunicación</h3><p>Contactos de emergencia, mensajes preparados y avisos oficiales.</p></div>
+      <div class="item"><div class="ico">🎒</div><h3>6 · Rutas y apoyo</h3><p>Quedarse o salir, mochila de evacuación y puntos de encuentro.</p></div>
+      <div class="item"><div class="ico">👨‍👩‍👧</div><h3>7 · Personas</h3><p>Quién necesita ayuda y quién se encarga de cada tarea en la familia.</p></div>
+      <div class="item"><div class="ico">⚠️</div><h3>+ Seguridad</h3><p>Monóxido de carbono, gas, generadores y alimentos tras el apagón.</p></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <span class="kick">Mirad por dentro</span>
+    <h2>Mirad el Plan 72h por dentro</h2>
+    <p class="sub">Páginas reales del Plan 72h.</p>
+    <div class="prev">
+      <figure><img src="img/p006.jpg" alt="Página: Se ha ido la luz, qué hacer ahora" loading="lazy"><figcaption><b>Pág. 6</b> · Se ha ido la luz: qué hacer ahora</figcaption></figure>
+      <figure><img src="img/p012.jpg" alt="Página: menú sin cocinar" loading="lazy"><figcaption><b>Pág. 12</b> · Menú de tres días sin cocinar</figcaption></figure>
+      <figure><img src="img/p042.jpg" alt="Página: línea de tiempo de las 72 horas" loading="lazy"><figcaption><b>Pág. 42</b> · Línea de tiempo de las 72 horas</figcaption></figure>
+      <figure><img src="img/p045.jpg" alt="Página: lista de compras por prioridad" loading="lazy"><figcaption><b>Pág. 45</b> · Lista de compras por prioridad</figcaption></figure>
+    </div>
+    <p style="margin:1.3rem 0 0"><a class="btn" href="https://pay.hotmart.com/K108448589X" rel="noopener" style="max-width:420px;margin-inline:auto">Quiero mi Plan 72h</a></p>
+  </section>
+
+  <section class="sec">
+    <span class="kick">Información que se puede comprobar</span>
+    <h2>Con fuentes oficiales para verificar cada dato</h2>
+    <p class="sub">La guía incluye una sección de fuentes y de configuración de alertas, para que comprobéis y actualicéis la información en los canales oficiales de vuestra zona.</p>
+    <div class="pills"><span>112 · Emergencias</span><span>Protección Civil</span><span>AEMET</span><span>Comisión Europea</span></div>
+    <p class="note">Ninguno de estos organismos patrocina ni avala este producto. Es una guía independiente que remite a sus recomendaciones públicas.</p>
+  </section>
+
+  <section class="sec">
+    <span class="kick">Todo lo que recibís</span>
+    <h2>La guía completa, en un solo PDF</h2>
+    <p class="sub">Para leer en el ordenador, rellenar en pantalla o imprimir y tener a mano el día que no haya luz.</p>
+    <div class="show"><img src="img/portada-s.jpg" alt="" width="110" height="155" loading="lazy"><div><b style="font-family:var(--head);text-transform:uppercase;font-size:1.15rem">Plan 72h · Versión Oro<span class="badge">INCLUIDA</span></b><p style="margin:.4rem 0 0;color:var(--mut);font-size:.9rem">13 partes y 125 páginas: desde los primeros 30 minutos hasta fichas rápidas de decisión, formularios de salud y un simulacro familiar.</p><div class="tags"><span>Imprimible</span><span>Campos para rellenar</span><span>Fichas rápidas</span><span>Simulacro</span></div></div></div>
+  </section>
+
+  <section class="sec">
+    <span class="kick">Cómo funciona</span>
+    <h2>Una tarde para dejarlo preparado</h2>
+    <div class="steps">
+      <div class="item"><div class="n">1</div><h3>Recibís el PDF</h3><p>Llega a vuestro correo tras la compra. Imprimid las fichas que vayáis a usar, o rellenadlas en pantalla.</p></div>
+      <div class="item"><div class="n">2</div><h3>Lo adaptáis a vuestra casa</h3><p>Contactos, puntos de encuentro, medicación y necesidades de cada persona de la casa.</p></div>
+      <div class="item"><div class="n">3</div><h3>Lo ponéis a prueba</h3><p>Seguid la rutina de 30 días y haced el simulacro de 20 minutos para ver qué hay que ajustar.</p></div>
+    </div>
+  </section>
+
+  <section class="sec" style="text-align:left">
+    <div style="text-align:center"><span class="kick">Preguntas frecuentes</span><h2 style="margin-bottom:1.2rem">Lo que conviene saber</h2></div>
+    <details open><summary>¿Cómo lo recibo?</summary><p>En cuanto se confirma el pago os llega un correo con el PDF, listo para descargar, imprimir o rellenar en pantalla.</p></details>
+    <details><summary>¿Hay que imprimirlo?</summary><p>No es obligatorio: los campos se pueden rellenar en el ordenador. Aun así, recomendamos imprimir al menos los contactos y las fichas rápidas, porque en un apagón el papel no depende de la batería.</p></details>
+    <details><summary>¿Las autoridades no ofrecen esto gratis?</summary><p>Sí, Protección Civil y otros organismos publican recomendaciones gratuitas, y conviene leerlas. El Plan 72h no las sustituye: es un cuaderno de trabajo para que vuestra familia deje por escrito sus propias respuestas.</p></details>
+    <details><summary>¿Sirve si vivimos en un piso?</summary><p>Sí. Hay una sección para adaptar el plan a casa, piso o zona rural.</p></details>
+    <details><summary>¿Incluye comida, agua o equipo?</summary><p>No. Es una guía digital en PDF. Os ayuda a decidir qué tener y cómo organizarlo, sin gastar de más.</p></details>
+    <details><summary>¿Es una suscripción?</summary><p>No. Es un pago único. No se cobra nada después.</p></details>
+    <details><summary>¿Es un producto oficial?</summary><p>No. Es un producto independiente, de carácter educativo y preventivo. En una emergencia real, seguid siempre las instrucciones de los servicios oficiales.</p></details>
+  </section>
+
+  <section class="sec cta-final">
+    <h2>Preparar el plan lleva una tarde. Improvisarlo, mucho más.</h2>
+    <p class="sub">125 páginas para que cada persona de la casa sepa qué hacer, dónde están las cosas y a quién llamar.</p>
+    <a class="btn" href="https://pay.hotmart.com/K108448589X" rel="noopener">Quiero mi Plan 72h</a>
+  </section>
+
+</div>
+</main>
+
+<footer>
+  <div class="w">
+    <!-- PENDENTE: dados do vendedor (razão social, NIF/CNPJ, endereço), e-mail de suporte e links das políticas -->
+    <p><strong style="color:#fff">Plan 72h</strong> · Vendedor: pendiente · Contacto: pendiente · <a href="legal/#aviso">Aviso legal</a> · <a href="legal/#privacidad">Privacidad</a> · <a href="legal/#devoluciones">Devoluciones</a></p>
+    <p>Material educativo y preventivo. No sustituye las indicaciones de Protección Civil, de los servicios sanitarios ni de otras autoridades. En caso de emergencia, llamad al 112. Producto independiente, no afiliado a ningún organismo público. Este sitio no está afiliado a Meta Platforms, Inc.</p>
+  </div>
+</footer>
+
+<div class="sticky"><span><b>14,90 €</b> · pago único</span><a href="https://pay.hotmart.com/K108448589X" rel="noopener">Quiero mi plan</a></div>
+<script src="consent.js"></script>
+</body>
+</html>
