@@ -102,7 +102,28 @@
   .sticky{position:fixed;left:0;right:0;bottom:0;z-index:20;background:#05080fee;border-top:1px solid var(--line);padding:.6rem 1rem calc(.6rem + env(safe-area-inset-bottom));display:none;align-items:center;justify-content:space-between;gap:.8rem;backdrop-filter:blur(8px)}
   .sticky b{font-family:var(--head);font-size:1.3rem;color:var(--gold)}
   .sticky a{background:linear-gradient(180deg,#ffd77a,var(--gold2));color:#2a1a02;font-weight:800;text-decoration:none;border-radius:10px;padding:.75rem 1.2rem;white-space:nowrap}
-  @media(max-width:860px){.hero .g,.two{grid-template-columns:1fr}.poster{position:static;max-width:360px;margin-inline:auto}.show{flex-direction:column;text-align:center}.sticky{display:flex}.hero:after{background:linear-gradient(180deg,#0a1424ee 0%,#0a1424cc 60%,#0a1424 100%)}}
+  @media(max-width:860px){
+    .bar div{animation:none;display:flex;flex-wrap:wrap;justify-content:center;gap:.2rem .8rem;padding:.5rem .75rem;white-space:normal;text-align:center}
+    .bar div span:nth-child(n+6){display:none}
+    .hero .g{display:flex;flex-direction:column;gap:1rem}
+    .stack{order:1;width:100%}
+    .poster{order:2;position:static;width:min(100%,250px);margin:0 auto}
+    .two{grid-template-columns:1fr}
+    .show{flex-direction:column;text-align:center}
+    .sticky{display:flex}
+    .sticky>span{min-width:0;font-size:.82rem;line-height:1.25}
+    .sticky b{font-size:1.15rem}
+    .sticky a{min-height:44px;display:flex;align-items:center;justify-content:center;padding:.65rem .9rem;font-size:.84rem}
+    .hero:after{background:linear-gradient(180deg,#0a1424ee 0%,#0a1424cc 60%,#0a1424 100%)}
+    summary{min-height:44px;display:flex;align-items:center}
+    footer{padding-bottom:calc(7rem + env(safe-area-inset-bottom))}
+  }
+  @media(max-width:380px){
+    .w,.col{width:calc(100% - 1.25rem)}
+    .sec{padding:1rem;border-radius:14px}
+    .sticky{gap:.45rem;padding-inline:.65rem}
+    .sticky a{padding-inline:.65rem;font-size:.78rem}
+  }
   @media(prefers-reduced-motion:reduce){.bar div{animation:none}html{scroll-behavior:auto}}
 </style>
 </head>
