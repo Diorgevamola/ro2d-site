@@ -2,7 +2,7 @@
    - Nada se carga antes de aceptar. Aceptar y rechazar tienen el mismo peso visual.
    - PENDENTE: poner el ID del pixel NUEVO de España en PIXEL_ID (hoy vacío = no carga nada aunque se acepte). */
 (function () {
-  var PIXEL_ID = ""; // PENDENTE
+  var PIXEL_ID = "1929265708237978"; // Pixel Plan 72h
   var KEY = "p72_consent";
   function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
   function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
